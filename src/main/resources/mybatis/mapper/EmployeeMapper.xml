@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--<mapper namespace="com.hbl.sBoot.mapper.EmployeeMapper">
+    <select id="getEmpById" resultType="com.hbl.sBoot.entities.Employee">
+      SELECT * FROM employee WHERE id=#{id}
+    </select>
+    <insert id="insertEmp">
+        INSERT INTO employee(lastName,email,gender,d_id,birth) VALUES (#{lastName},#{email},#{gender},#{d_id},#{birth})
+    </insert>-->
+<mapper namespace="com.example.springboot.mapper.EmployeeMapper">
+    <resultMap id="empMap" type="com.example.springboot.entity.Employee">
+        <id property="id"               column="id"/>
+        <result property="lastName"     column="lastName"/>
+        <result property="email"        column="email"/>
+        <result property="gender"       column="gender"/>
+        <result property="dId"          column="d_Id"/>
+        <result property="birth"        column="birth"/>
+    </resultMap>
+    <select id="getEmps" resultMap="empMap">
+        SELECT * FROM employee
+    </select>
+    <select id="getEmp" parameterType="Integer" resultMap="empMap">
+        SELECT * FROM employee WHERE id=#{id}
+    </select>
+    <insert id="insertEmp" parameterType="com.example.springboot.entity.Employee">
+        INSERT INTO employee(lastName,email,gender,d_id,birth)
+        VALUES (#{lastName},#{email},#{gender},#{dId},#{birth})
+    </insert>
+    <update id="updateById" parameterType="com.example.springboot.entity.Employee">
+        UPDATE employee
+        SET lastName = #{lastName},
+            email = #{email},
+            gender = #{gender},
+            d_Id = #{dId},
+            birth = #{birth}
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteById" parameterType="Integer">
+        DELETE FROM employee WHERE id=#{id}
+    </delete>
+</mapper>
