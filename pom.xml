@@ -63,7 +63,7 @@
         </dependency>
 
         <!--自定义的starter-->
-        <dependency>
+       <dependency>
             <groupId>com.demo.starter</groupId>
             <artifactId>demo-spring-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
