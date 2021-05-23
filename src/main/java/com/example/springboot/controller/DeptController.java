@@ -24,6 +24,7 @@ public class DeptController {
     @ApiOperation(value = "插入一个department")
     @GetMapping("/deptInsert")
     public Department insertDepartment(Department department){
+        System.out.println("+++++++"+department.getId());
         deptService.insertDept(department);
         return department;
     }
